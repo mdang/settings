@@ -1,0 +1,92 @@
+# Your snippets
+#
+# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
+# expand the prefix into a larger code block with templated values.
+#
+# You can create a new snippet in this file by typing "snip" and then hitting
+# tab.
+#
+# An example CoffeeScript snippet to expand log to console.log:
+#
+# '.source.coffee':
+#   'Console log':
+#     'prefix': 'log'
+#     'body': 'console.log $1'
+#
+# Each scope (e.g. '.source.coffee' above) can only be declared once.
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it in the
+# Atom Flight Manual:
+# https://atom.io/docs/latest/using-atom-basic-customization#cson
+'.text.html.basic':
+  'jQuery CDN Source':
+    'prefix': 'jquerycdn'
+    'body': '<script src="${1:https:}//code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>$2'
+  'Bootstrap CSS CDN Source':
+    'prefix': 'bootstrapcdn'
+    'body': '<link rel="stylesheet" href="${1:https:}//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen" title="Bootstrap" charset="utf-8" />$2'
+  'Bootstrap JS CDN Source':
+    'prefix': 'bootstrapcdnjs'
+    'body': '<script src="${1:https:}//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>$2'
+  'Font Awesome CDN Source':
+    'prefix': 'fontawesomecdn'
+    'body': '<link rel="stylesheet" href="${1:https:}//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" media="screen" title="Font Awesome" charset="utf-8" />$2'
+  'HTML Barebones Boilerplate':
+    'prefix': 'htmlbare'
+    'body': """
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <title>${1}</title>
+</head>
+<body>
+
+${2}
+
+</body>
+</html>
+"""
+  'HTML Kitchen Sink Boilerplate':
+    'prefix': 'htmlkitchen'
+    'body': """
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <title>${1}</title>
+  <link rel="canonical" href="${2}" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="${3:https:}//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="${4:https:}//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css" media="all" />
+</head>
+<body>
+
+${6}
+
+<script src="${5:https:}//code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+</body>
+</html>
+"""
+'.source.js':
+  'Route':
+    'prefix': 'route'
+    'body': """
+      ${1:router}.${2:get}('/$3', (req, res, next) => {
+        $4
+      });
+    """
+  'console.log':
+    'prefix': 'log'
+    'body': 'console.log(\'${1:%j}\', ${2:Object});$3'
