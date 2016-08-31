@@ -232,3 +232,8 @@ export NODE_ENV="development"
 
 [ -s ~/.nvm/nvm.sh ] && . ~/.nvm/nvm.sh # This loads NVM
 nvm use v4.3.0
+
+# Aliases
+alias dev='cd ~/Developer'
+alias aluminati='cd ~/Developer/ga-aluminati'
+alias downloads='cd ~/Downloads'
