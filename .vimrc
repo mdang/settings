@@ -68,10 +68,12 @@ Plugin 'valloric/youcompleteme'
 
 if has('gui_running')
     set guifont=Noto\ Mono\ for\ Powerline
+    syntax enable
     set background=light
     colorscheme solarized
     let g:solarized_termtrans=0
 else
+    syntax enable
     set background=dark
     colorscheme solarized
     let g:solarized_termtrans=0
@@ -151,7 +153,6 @@ set secure
 set number
 " Enable syntax highlighting
 syntax on
-syntax enable
 " Highlight current line
 set cursorline
 " Make tabs as wide as two spaces
