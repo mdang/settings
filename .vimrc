@@ -66,18 +66,20 @@ let g:indent_guides_enable_on_vim_startup = 1
 Plugin 'valloric/youcompleteme'
 " $ ./install.py --js-completer
 
+syntax enable
 if has('gui_running')
     set guifont=Noto\ Mono\ for\ Powerline
-    syntax enable
     set background=light
-    colorscheme solarized
     let g:solarized_termtrans=0
 else
-    syntax enable
-    set background=dark
-    colorscheme solarized
+    " https://superuser.com/questions/370556/vim-colors-not-working-properly-in-terminal
+    " https://gist.github.com/yasith/1508312
+    set t_Co=256
+    set background=light
+    let g:solarized_termcolors=&t_Co
     let g:solarized_termtrans=0
 endif
+colorscheme solarized
 
 " https://vimawesome.com/plugin/delimitmate
 " Automatic closing of quotes, parenthesis, etc
