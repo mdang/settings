@@ -12,15 +12,28 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " https://github.com/tpope/vim-fugitive
 " Git support
-Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-fugitive'
 
 " https://vimawesome.com/plugin/nerdtree-red
 " File explorer
 Plugin 'scrooloose/nerdtree'
-" Quicker way to navigate between tabs
-map  <C-l> :tabn<CR>
-map  <C-h> :tabp<CR>
-map  <C-n> :tabnew<CR>
+" Quicker way to navigate between buffers
+map  <C-l> :bn<CR>
+map  <C-h> :bp<CR>
+" Toggle the NERDTree file explorer
+map <C-e> :NERDTreeToggle<CR>
+" Appearance
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+" Close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Open NERDTree automatically when vim starts up on opening a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+" When switching buffers (tabs), prevent warnings that you haven't saved the file yet
+set hidden
+" Show hidden files by default
+let NERDTreeShowHidden=1
 
 " https://vimawesome.com/plugin/vim-airline
 " Status bar
@@ -35,7 +48,7 @@ endif
 let g:airline_symbols.space = "\ua0"
 
 " https://vimawesome.com/plugin/syntastic
-" Code linter, eslint
+" Syntax highlighter
 Plugin 'scrooloose/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -44,19 +57,10 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 
 " https://vimawesome.com/plugin/ctrlp-vim-red
 " Fuzzy search
 Plugin 'kien/ctrlp.vim'
-
-" https://vimawesome.com/plugin/the-nerd-commenter
-
-Plugin 'scrooloose/nerdcommenter'
-" Comment lines
-" Following is needed for nercommenter
-filetype plugin on
 
 " https://vimawesome.com/plugin/commentary-vim
 Plugin 'tpope/vim-commentary'
@@ -72,20 +76,16 @@ let g:indent_guides_enable_on_vim_startup = 1
 Plugin 'valloric/youcompleteme'
 " $ ./install.py --js-completer
 
-syntax enable
 if has('gui_running')
     set guifont=Noto\ Mono\ for\ Powerline
     set background=light
+    colorscheme solarized
     let g:solarized_termtrans=0
 else
-    " https://superuser.com/questions/370556/vim-colors-not-working-properly-in-terminal
-    " https://gist.github.com/yasith/1508312
-    set t_Co=256
-    set background=light
-    let g:solarized_termcolors=&t_Co
+    set background=dark
+    colorscheme solarized
     let g:solarized_termtrans=0
 endif
-colorscheme solarized
 
 " https://vimawesome.com/plugin/delimitmate
 " Automatic closing of quotes, parenthesis, etc
@@ -161,6 +161,7 @@ set secure
 set number
 " Enable syntax highlighting
 syntax on
+syntax enable
 " Highlight current line
 set cursorline
 " Make tabs as wide as two spaces
