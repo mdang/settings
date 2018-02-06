@@ -35,7 +35,7 @@ endif
 let g:airline_symbols.space = "\ua0"
 
 " https://vimawesome.com/plugin/syntastic
-" Syntax highlighter
+" Code linter, eslint
 Plugin 'scrooloose/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -44,6 +44,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 
 " https://vimawesome.com/plugin/ctrlp-vim-red
 " Fuzzy search
