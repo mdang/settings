@@ -17,6 +17,10 @@ Plugin 'tpope/vim-fugitive'
 " https://vimawesome.com/plugin/nerdtree-red
 " File explorer
 Plugin 'scrooloose/nerdtree'
+" Quicker way to navigate between tabs
+map  <C-l> :tabn<CR>
+map  <C-h> :tabp<CR>
+map  <C-n> :tabnew<CR>
 
 " https://vimawesome.com/plugin/vim-airline
 " Status bar
